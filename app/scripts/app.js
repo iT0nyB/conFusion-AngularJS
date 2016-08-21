@@ -12,7 +12,7 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
             price: '4.99',
             description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
             comment: ''
-    },
+        },
 
         {
             name: 'Zucchipakoda',
@@ -22,7 +22,7 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
             price: '1.99',
             description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
             comment: ''
-    },
+        },
 
         {
             name: 'Vadonut',
@@ -32,7 +32,7 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
             price: '1.99',
             description: 'A quintessential ConFusion experience, is it a vada or is it a donut?',
             comment: ''
-    },
+        },
 
         {
             name: 'ElaiCheese Cake',
@@ -42,8 +42,8 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
             price: '2.99',
             description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
             comment: ''
-    }
-  ];
+        }
+    ];
 
     $scope.select = function (setTab) {
         $scope.tab = setTab;
@@ -66,4 +66,48 @@ angular.module('confusionApp', []).controller('MenuController', ['$scope', funct
     $scope.toggleDetails = function () {
         $scope.showDetails = !$scope.showDetails;
     };
-}]);
+
+
+}])
+
+.controller('ContactController', ['$scope', function ($scope) {
+    $scope.feedback = {
+        mychannel: "",
+        firstName: "",
+        lastName: "",
+        agree: false,
+        email: ""
+    };
+    var channels = [{
+        value: "tel",
+        label: "Tel."
+    }, {
+        value: "Email",
+        label: "Email"
+    }];
+    $scope.channels = channels;
+    $scope.invalidChannelSelection = false;
+                                }])
+
+.controller('FeedbackController', ['$scope', function ($scope) {
+    $scope.sendFeedback = function () {
+        console.log($scope.feedback);
+        if ($scope.feedback.agree && ($scope.feedback.mychannel == "") && !$scope.feedback.mychannel) {
+            $scope.invalidChannelSelection = true;
+            console.log('incorrect');
+        } else {
+            $scope.invalidChannelSelection = false;
+            $scope.feedback = {
+                mychannel: "",
+                firstName: "",
+                lastName: "",
+                agree: false,
+                email: ""
+            };
+            $scope.feedback.mychannel = "";
+
+            $scope.feedbackForm.$setPristine();
+            console.log($scope.feedback);
+        }
+    };
+        }]);
