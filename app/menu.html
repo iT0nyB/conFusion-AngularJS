@@ -56,8 +56,8 @@
                                 <h2 class="media-heading">{{dish.name}}
                          <span class="label label-danger">{{dish.label}}</span>
                          <span class="badge">{{dish.price | currency}}</span></h2>
-                                
-                                
+
+
                                 <p ng-show="showDetails">{{dish.description}}</p>
                             </div>
                         </li>
@@ -70,9 +70,12 @@
     <!-- build:js scripts/main.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/services.js">
+    </script>
     <!-- endbuild -->
 
 
 </body>
 
-</html>
+        </html>
